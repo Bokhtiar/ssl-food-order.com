@@ -8,7 +8,10 @@ import { useCallback, useEffect, useState } from "react"
 import { networkErrorHandeller } from "../../utils/helper"
  
 export const Home = () => {
+    const [product, setProduct] = useState([])
     const [category, setCategory] = useState([])
+
+    // category
     const fetchCategory = useCallback( async() => {
         try {
             const response = await NetworkServices.UserCategory.index()
@@ -20,7 +23,20 @@ export const Home = () => {
         }
     },[])
 
+    // product
+    const fetchProduct = useCallback(async()=> {
+        try {
+            const response = await NetworkServices.UserProduct.index()
+            if (response.status === 200) {
+                setProduct(response?.data?.data)
+            }
+        } catch (error) {
+            networkErrorHandeller(error)
+        }
+    },[])
+    console.log("product", product);
     useEffect(() =>{
+        fetchProduct()
         fetchCategory()
     },[])
     return <>
@@ -58,17 +74,12 @@ export const Home = () => {
                 {/* category ways product */}
                 <div className=" grid grid-cols-2 md:grid-cols-5 gap-5">
                     {
-                        
+                        product.map((item, i) => {
+                            return <Product key={i} price={item.price} title={item.title}></Product>
+                        })   
                     }
-                    <Product price="200" title="Coffea"></Product>
-                    <Product price="200" title="Coffea"></Product>
-                    <Product price="200" title="Coffea"></Product>
-                    <Product price="200" title="Coffea"></Product>
-                    <Product price="200" title="Coffea"></Product>
-                    <Product price="200" title="Coffea"></Product>
-                    <Product price="200" title="Coffea"></Product>
-                    <Product price="200" title="Coffea"></Product>
-                    <Product price="200" title="Coffea"></Product>
+                    
+                
                 </div>
                 
             </div>
