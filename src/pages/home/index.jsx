@@ -34,7 +34,15 @@ export const Home = () => {
             networkErrorHandeller(error)
         }
     },[])
-    console.log("product", product);
+    
+    // category has assign product
+    const categoryHasAssingProduct =async(id)=> {
+        const response = await NetworkServices.UserCategory.categoryHasAssignProduct(id)
+        if (response.status === 200) {
+            setProduct(response?.data?.data)
+        }
+    }
+
     useEffect(() =>{
         fetchProduct()
         fetchCategory()
@@ -66,7 +74,7 @@ export const Home = () => {
                     <span className=" border border-primary px-7 rounded-lg py-2 bg-primary text-white">All</span>
                     {
                         category.map((category, i) => {
-                            return <span className=" border border-primary px-7 rounded-lg py-2 hover:bg-primary hover:text-white">{category?.category_name}</span>
+                            return <span onClick={(e) => categoryHasAssingProduct(category.category_id)} className=" border border-primary px-7 rounded-lg py-2 hover:bg-primary hover:text-white">{category?.category_name}</span>
                         })
                     }
                    

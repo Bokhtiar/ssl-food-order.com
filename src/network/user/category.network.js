@@ -7,5 +7,5 @@ export const index = async () => {
 
 /* list of resource */
 export const categoryHasAssignProduct = async (id) => {
-    return await publicRequest.get(`/category/${id}`);
+    return await publicRequest.get(`/category/product/${id}`);
 };
