@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { Images } from "../../utils/images"
 import { PrimaryButton, SecButton } from "../../components/button"
 import { SectionHeading } from "../../components/heading"
+import { Product } from "../../components/product"
 
 export const Home = () => {
     return <>
@@ -27,7 +28,7 @@ export const Home = () => {
                 {/* heading */}
                 <SectionHeading title="Our Menu"></SectionHeading>
                 {/* category */}
-                <div className="flex items-center gap-5">
+                <div className="flex items-center gap-5 my-6">
                     <span className=" border border-primary px-7 rounded-lg py-2 bg-primary text-white">All</span>
                     <span className=" border border-primary px-7 rounded-lg py-2 hover:bg-primary hover:text-white">Coffea</span>
                     <span className=" border border-primary px-7 rounded-lg py-2 hover:bg-primary hover:text-white">Coffea</span>
@@ -35,6 +36,17 @@ export const Home = () => {
                     <span className=" border border-primary px-7 rounded-lg py-2 hover:bg-primary hover:text-white">Coffea</span>
                 </div>
                 {/* category ways product */}
+                <div className=" grid grid-cols-2 md:grid-cols-5 gap-5">
+                    <Product price="200" title="Coffea"></Product>
+                    <Product price="200" title="Coffea"></Product>
+                    <Product price="200" title="Coffea"></Product>
+                    <Product price="200" title="Coffea"></Product>
+                    <Product price="200" title="Coffea"></Product>
+                    <Product price="200" title="Coffea"></Product>
+                    <Product price="200" title="Coffea"></Product>
+                    <Product price="200" title="Coffea"></Product>
+                    <Product price="200" title="Coffea"></Product>
+                </div>
                 
             </div>
         </section>
