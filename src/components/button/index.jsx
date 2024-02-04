@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom"
+
 export const PrimaryButton = (props) => {
     return <button 
 
-        type="submit" class="flex items-center rounded-lg bg-green-700 px-4 py-1 text-white" disabled={props.loading} >
+        type="submit" class="flex items-center rounded-lg bg-green-700 px-5 py-2 text-white" disabled={props.loading} >
         
         {props.loading ?
         <svg class={`${props.loading ? 'animate-spin' : "" } mr-3 h-5 w-5  text-white`} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -11,4 +13,10 @@ export const PrimaryButton = (props) => {
          : ""}
         <span class="font-medium"> {props.name} </span>
     </button>
+}
+
+export const SecButton = (props) => {
+    return <>
+        <Link className=" bg-primary px-8 py-3 rounded-full text-white font-[600]">{props.name}</Link>
+    </>
 }
