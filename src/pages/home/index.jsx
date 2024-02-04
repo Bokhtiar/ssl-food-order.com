@@ -3,8 +3,26 @@ import { Images } from "../../utils/images"
 import { PrimaryButton, SecButton } from "../../components/button"
 import { SectionHeading } from "../../components/heading"
 import { Product } from "../../components/product"
-
+import {NetworkServices} from '../../network/index'
+import { useCallback, useEffect, useState } from "react"
+import { networkErrorHandeller } from "../../utils/helper"
+ 
 export const Home = () => {
+    const [category, setCategory] = useState([])
+    const fetchCategory = useCallback( async() => {
+        try {
+            const response = await NetworkServices.UserCategory.index()
+            if (response.status === 200) {
+                setCategory(response?.data?.data)
+            }
+        } catch (error) {
+            networkErrorHandeller(error)
+        }
+    },[])
+
+    useEffect(() =>{
+        fetchCategory()
+    },[])
     return <>
         {/* https://dribbble.com/shots/21617600-Restaurant-Landing-Page-Design-UI */}
 
@@ -30,13 +48,18 @@ export const Home = () => {
                 {/* category */}
                 <div className="flex items-center gap-5 my-6">
                     <span className=" border border-primary px-7 rounded-lg py-2 bg-primary text-white">All</span>
-                    <span className=" border border-primary px-7 rounded-lg py-2 hover:bg-primary hover:text-white">Coffea</span>
-                    <span className=" border border-primary px-7 rounded-lg py-2 hover:bg-primary hover:text-white">Coffea</span>
-                    <span className=" border border-primary px-7 rounded-lg py-2 hover:bg-primary hover:text-white">Coffea</span>
-                    <span className=" border border-primary px-7 rounded-lg py-2 hover:bg-primary hover:text-white">Coffea</span>
-                </div>
+                    {
+                        category.map((category, i) => {
+                            return <span className=" border border-primary px-7 rounded-lg py-2 hover:bg-primary hover:text-white">{category?.category_name}</span>
+                        })
+                    }
+                   
+                  </div>
                 {/* category ways product */}
                 <div className=" grid grid-cols-2 md:grid-cols-5 gap-5">
+                    {
+                        
+                    }
                     <Product price="200" title="Coffea"></Product>
                     <Product price="200" title="Coffea"></Product>
                     <Product price="200" title="Coffea"></Product>
