@@ -31,3 +31,8 @@ export const networkErrorHandeller = (error) => {
         return Toastify.Error("Something going wrong, Try again.");
     }
 };
+
+/** image base url */
+export const ImageShow = (image) => {
+    return `http://localhost:8000/${image}`
+}

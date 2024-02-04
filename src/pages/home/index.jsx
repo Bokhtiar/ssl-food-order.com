@@ -83,7 +83,7 @@ export const Home = () => {
                 <div className=" grid grid-cols-2 md:grid-cols-5 gap-5">
                     {
                         product.map((item, i) => {
-                            return <Product key={i} price={item.price} title={item.title}></Product>
+                            return <Product key={i} price={item.price} title={item.title} product_id={item.product_id} image={item.image} ></Product>
                         })   
                     }
                     

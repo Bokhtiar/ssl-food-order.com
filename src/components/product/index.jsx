@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import { Images } from "../../utils/images"
+import { ImageShow } from '../../utils/helper'
 
 export const Product = (props) => {
 
@@ -8,7 +9,7 @@ export const Product = (props) => {
     return <>
         {/* https://www.youtube.com/watch?v=H8OjG7ChqoE&ab_channel=ThapaTechnical */}
         <div className='shadow rounded-xl relative bg-white border border-primary py-4 px-3'>
-            <img src={Images.Banner} style={{ width: "100%" }} className='mx-auto h-52' alt="" />
+            <img src={ImageShow(props?.image)} style={{ width: "100%" }} className='mx-auto h-52' alt="" />
             <div className='px-4  '>
                 <h3 className=' font-heading md:text-[13px] text-[11px] text-primary'><Link to={`/product/show/${props.product_id}`}>{props.title}</Link></h3>
 
