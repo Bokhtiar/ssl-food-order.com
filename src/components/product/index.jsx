@@ -1,17 +1,20 @@
 import { Link } from 'react-router-dom'
-
-import { Images } from "../../utils/images"
 import { ImageShow } from '../../utils/helper'
+import { NetworkServices } from '../../network'
 
 export const Product = (props) => {
-
-
+    const handleAddToCart = async(id) => {
+        var cartProducts = JSON.parse(localStorage.getItem('carts')) || [];
+        const cartProduct = await NetworkServices.UserProduct.show(id);
+        cartProducts.push(cartProduct.data.data);
+        localStorage.setItem("carts", JSON.stringify(cartProducts));
+    }
     return <>
         {/* https://www.youtube.com/watch?v=H8OjG7ChqoE&ab_channel=ThapaTechnical */}
-        <div className='shadow rounded-xl relative bg-white border border-primary py-4 px-3'>
-            <img src={ImageShow(props?.image)} style={{ width: "100%" }} className='mx-auto h-52' alt="" />
+        <div className='shadow rounded-xl relative bg-white border border-gray-100 py-4 px-3'>
+            <img src={ImageShow(props?.image)} style={{ width: "100%" }} className='mx-auto h-52 rounded-md' alt="" />
             <div className='px-4  '>
-                <h3 className=' font-heading md:text-[13px] text-[11px] text-primary'><Link to={`/product/show/${props.product_id}`}>{props.title}</Link></h3>
+                <h3 className=' font-heading md:text-[13px] text-[11px] text-primary mt-2'><Link to={`/product/show/${props.product_id}`}>{props.title}</Link></h3>
 
                 <div className="flex items-center space-x-1 md:py-1 py-2">
                     <svg className="w-3 h-3 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
@@ -33,7 +36,7 @@ export const Product = (props) => {
 
                 <div className='flex items-center justify-between mb-3'>
                     <h3 className=' font-heading md:text-[11px] text-[8px]'>{props.price} TK</h3>
-                    <span className=' border rounded-lg px-2 font-heading md:text-[11px] md: text-[8px] py-1 border-primary'>Add To Card</span>
+                    <span onClick={() => handleAddToCart(props?.product_id)} className=' border rounded-lg px-2 font-heading md:text-[11px] md: text-[8px] py-1 border-primary'>Add To Card</span>
                 </div>
 
                 {/* love */}
