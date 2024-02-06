@@ -1,14 +1,30 @@
 import { Link } from 'react-router-dom'
 import { ImageShow } from '../../utils/helper'
 import { NetworkServices } from '../../network'
+import { useCart } from '../../cartContext';
 
 export const Product = (props) => {
-    const handleAddToCart = async(id) => {
-        var cartProducts = JSON.parse(localStorage.getItem('carts')) || [];
-        const cartProduct = await NetworkServices.UserProduct.show(id);
-        cartProducts.push(cartProduct.data.data);
-        localStorage.setItem("carts", JSON.stringify(cartProducts));
-    }
+    // const handleAddToCart = async(id) => {
+    //     var cartProducts = JSON.parse(localStorage.getItem('carts')) || [];
+    //     const cartProduct = await NetworkServices.UserProduct.show(id);
+    //     cartProducts.push(cartProduct.data.data);
+    //     localStorage.setItem("carts", JSON.stringify(cartProducts));
+    // }
+
+    const { cart, updateCart } = useCart();
+
+    const handleAddToCart = async(newCartItem) => {
+        const cartProduct = await NetworkServices.UserProduct.show(newCartItem);
+       
+        const newCart = [...cart, cartProduct.data.data];
+        updateCart(newCart);
+
+        // Update local storage if needed
+        localStorage.setItem('carts', JSON.stringify(newCart));
+    };
+
+
+
     return <>
         {/* https://www.youtube.com/watch?v=H8OjG7ChqoE&ab_channel=ThapaTechnical */}
         <div className='shadow rounded-xl relative bg-white border border-gray-100 py-4 px-3'>
