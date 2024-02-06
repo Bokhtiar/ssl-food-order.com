@@ -6,6 +6,7 @@ import { Navigate, useRoutes } from "react-router-dom";
 import { Home } from "./pages/home";
 import { MainLayout } from "./layouts/main.layout";
 import { ProductShow } from "./pages/product/show";
+import { CartProvider } from "./contextApi/cartContext";
 
 export const App = () => {
 
@@ -25,8 +26,10 @@ export const App = () => {
   
   return (
     <>
+      <CartProvider>
       {routing}
       <ToastContainer />
+      </CartProvider>
     </>
   );
 }

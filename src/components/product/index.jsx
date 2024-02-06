@@ -1,28 +1,24 @@
 import { Link } from 'react-router-dom'
 import { ImageShow } from '../../utils/helper'
 import { NetworkServices } from '../../network'
-import { useCart } from '../../cartContext';
+import { useCart } from '../../contextApi/cartContext';
+
 
 export const Product = (props) => {
-    // const handleAddToCart = async(id) => {
-    //     var cartProducts = JSON.parse(localStorage.getItem('carts')) || [];
-    //     const cartProduct = await NetworkServices.UserProduct.show(id);
-    //     cartProducts.push(cartProduct.data.data);
-    //     localStorage.setItem("carts", JSON.stringify(cartProducts));
-    // }
+    
+    /** add to card */
+    const add_to_card = (product) => {
+        var cartProducts = JSON.parse(localStorage.getItem('carts')) || []
+        cartProducts.push(product);
+        console.log(cartProducts);
+        localStorage.setItem("carts", JSON.stringify(cartProducts));
+    }
 
-    const { cart, updateCart } = useCart();
+    const { addToCart } = useCart();
 
-    const handleAddToCart = async(newCartItem) => {
-        const cartProduct = await NetworkServices.UserProduct.show(newCartItem);
-       
-        const newCart = [...cart, cartProduct.data.data];
-        updateCart(newCart);
-
-        // Update local storage if needed
-        localStorage.setItem('carts', JSON.stringify(newCart));
+    const handleAddToCart = (item) => {
+        addToCart(item);
     };
-
 
 
     return <>
@@ -52,17 +48,8 @@ export const Product = (props) => {
 
                 <div className='flex items-center justify-between mb-3'>
                     <h3 className=' font-heading md:text-[11px] text-[8px]'>{props.price} TK</h3>
-                    <span onClick={() => handleAddToCart(props?.product_id)} className=' border rounded-lg px-2 font-heading md:text-[11px] md: text-[8px] py-1 border-primary'>Add To Card</span>
+                    <span onClick={() => handleAddToCart(props)} className=' border rounded-lg px-2 font-heading md:text-[11px] md: text-[8px] py-1 border-primary'>Add To Card</span>
                 </div>
-
-                {/* love */}
-                {/* <p onClick={() => handleAddToCart(product2)} className='absolute right-0 inset-y-0 p-3'>
-                    {
-                        props.love === "true" ? <img src={Images.Love} className='h-6 w-6' alt="" /> : <span class=" text-gray-500 material-symbols-outlined">
-                            favorite
-                        </span>
-                    }
-                </p> */}
             </div>
         </div>
     </>
