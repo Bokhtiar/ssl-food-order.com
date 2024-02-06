@@ -3,7 +3,6 @@ import { Link, useParams } from "react-router-dom"
 import { NetworkServices } from "../../network/index";
 import { Product } from "../../components/product";
 import { networkErrorHandeller } from "../../utils/helper";
-import { Images } from "../../utils/images";
 import {ImageShow} from '../../utils/helper'
 
 export const ProductShow = () => {
@@ -17,27 +16,19 @@ export const ProductShow = () => {
             const response = await NetworkServices.UserProduct.show(id)
             if (response.status === 200) {
                 setProduct(response?.data?.data)
+
+                const Catresponse = await NetworkServices.UserCategory.categoryHasAssignProduct(response?.data?.data.category_id)
+                if (Catresponse.status === 200) {
+                    setCategoryProduct(Catresponse?.data?.data)
+                }
             }
         } catch (error) {
             networkErrorHandeller(error)
         }
     }, [id])
 
-    /** category product */
-    const fetchCategoryHasAssingProduct = useCallback(async() => {
-        try {
-            const response = await NetworkServices.UserCategory.categoryHasAssignProduct(product?.category_id)
-            if (response.status === 200) {
-                setCategoryProduct(response?.data?.data)
-            }
-        } catch (error) {
-            networkErrorHandeller(error)
-        }
-    },[product])
-
     useEffect(() => {
         fetchData()
-        fetchCategoryHasAssingProduct()
     }, [])
     
     
