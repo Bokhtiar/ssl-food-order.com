@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom"
 import { Dashboard } from '../components/dashboard'
 
 import { DashboardLayout } from "../layouts/dashboard.layout"
+import { Cart } from "../pages/cart";
 
 
 const appRoutes = [
@@ -17,9 +18,10 @@ const appRoutes = [
             // { path: "category", element: <CategoryList /> },
             // { path: "category/create", element: <CategoryCreate /> },
             // { path: "category/edit/:id", element: <CategoryEdit /> },
+            { path: "cart", element: <Cart /> },
           
         ],
-    },
+    }, 
 ]; 
 
 /* Generate permitted routes */

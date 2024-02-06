@@ -33,11 +33,11 @@ export const DashboardSidebar = () => {
                 </div>
 
                 <div className="flex  items-center my-2">
-                    <Link to="/dashboard/category" className="w-72 bg-white px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
+                    <Link to="/dashboard/cart" className="w-72 bg-white px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
                         <span class="material-symbols-outlined text-gray-600">
                             shopping_cart
                         </span>
-                        <span className=" font-semibold">Category</span>
+                        <span className=" font-semibold">Cart</span>
                     </Link>
                 </div>
 

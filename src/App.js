@@ -26,7 +26,7 @@ export const App = () => {
   
   return (
     <>
-      <CartProvider>
+      <CartProvider> 
       {routing}
       <ToastContainer />
       </CartProvider>
