@@ -42,24 +42,6 @@ export const DashboardSidebar = () => {
                 </div>
 
                 <div className="flex  items-center my-2">
-                    <Link to="/dashboard/designation" className="w-72 bg-white px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
-                        <span class="material-symbols-outlined text-gray-600">
-                            shopping_cart
-                        </span>
-                        <span className=" font-semibold">Designation</span>
-                    </Link>
-                </div>
-
-                <div className="flex  items-center my-2">
-                    <Link to="/dashboard/product" className="w-72 bg-white px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
-                        <span class="material-symbols-outlined text-gray-600">
-                            favorite
-                        </span>
-                        <span className=" font-semibold">Product</span>
-                    </Link>
-                </div>
-
-                <div className="flex  items-center my-2">
                     <Link to="/dashboard/order" className="w-72 bg-white px-2 text-black font-content text-left flex gap-1 items-center rounded-md py-1">
                         <span class="material-symbols-outlined text-gray-600">
                             list_alt

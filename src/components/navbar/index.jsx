@@ -75,6 +75,7 @@ export const Navbar = () => {
                                     </Link>
                                 </li>
                                 <li><Link to={'/login'}>Login</Link></li>
+                                <li><Link to={'/register'}>Register</Link></li>
                                 <li><Link to={'/dashboard'}>Dashboard</Link></li>
                                 <li><a>Logout</a></li>
                             </ul>

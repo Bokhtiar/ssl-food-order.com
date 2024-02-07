@@ -7,6 +7,7 @@ import { Home } from "./pages/home";
 import { MainLayout } from "./layouts/main.layout";
 import { ProductShow } from "./pages/product/show";
 import { CartProvider } from "./contextApi/cartContext";
+import { Register } from "./pages/auth/register";
 
 export const App = () => {
 
@@ -18,6 +19,7 @@ export const App = () => {
       { path: "/", element: <Home /> },
       { path: "/product/show/:id", element: <ProductShow /> },
       { path: "/login", element: <Login /> },
+      { path: "/register", element: <Register /> },
       
     ],
   };
