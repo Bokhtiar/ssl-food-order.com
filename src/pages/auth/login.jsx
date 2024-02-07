@@ -40,7 +40,7 @@ export const Login = () => {
 
     return (
         <section className="flex items-center justify-center h-screen">
-            <div className="shadow border border-green-100 rounded-lg" style={{ width: "350px" }}>
+            <div className="shadow border border-green-100 rounded-lg" style={{ width: "400px" }}>
                 <img height={60} width={60} className="mx-auto d-block border border-green-100 rounded-full mt-3" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzHlfUZS43dFCRG2rQ6HHMo6vfPecRCu7EuvEklOLlDg&s" alt="" />
                 <form className="px-4" onSubmit={handleSubmit(onSubmit)}>
 

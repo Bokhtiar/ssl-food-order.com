@@ -71,7 +71,7 @@ export const Home = () => {
                 <SectionHeading title="Our Menu"></SectionHeading>
                 {/* category */}
                 <div className="flex items-center gap-5 my-6">
-                    <span className=" border border-primary px-7 rounded-lg py-2 bg-primary text-white">All</span>
+                    <span onClick={() => fetchProduct()} className=" border border-primary px-7 rounded-lg py-2 bg-primary text-white">All</span>
                     {
                         category.map((category, i) => {
                             return <span onClick={(e) => categoryHasAssingProduct(category.category_id)} className=" border border-primary px-7 rounded-lg py-2 hover:bg-primary hover:text-white">{category?.category_name}</span>

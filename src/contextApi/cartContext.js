@@ -32,8 +32,9 @@ export const CartProvider = ({ children }) => {
     const [state, dispatch] = useReducer(cartReducer, initialState);
 
     const addToCart = (item) => {
+        const itemCart = {...item, qty:1}
         var cartProducts = JSON.parse(localStorage.getItem('carts')) || []
-        cartProducts.push(item);
+        cartProducts.push(itemCart);
         console.log(cartProducts);
         localStorage.setItem("carts", JSON.stringify(cartProducts));
 
