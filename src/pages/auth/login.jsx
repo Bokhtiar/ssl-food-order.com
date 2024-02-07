@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form"
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { NetworkServices } from '../../network/index'
 import { PrimaryButton } from "../../components/button"
 import { getToken, networkErrorHandeller, setToken } from '../../utils/helper'
@@ -20,7 +20,7 @@ export const Login = () => {
     const onSubmit = async (data) => {
         try {
             setLoading(true)
-            const response = await NetworkServices.Authentication.login(data)
+            const response = await NetworkServices.UserAuth.login(data)
             if (response.status === 200) {
                 setToken(response.data.data.token);
                 navigate("/dashboard");
@@ -74,6 +74,7 @@ export const Login = () => {
                             {errors.email && <span className="text-red-500 text-sm">This field is required</span>}
                         </label>
                     </div>
+                    <Link to={'/register'} className=" underline">Create New Account</Link>
                     {/* submit button */}
                     <div className="my-4 flex justify-center">
                         <PrimaryButton loading={loading} name="submit"></PrimaryButton>
